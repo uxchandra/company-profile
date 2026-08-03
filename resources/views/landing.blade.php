@@ -1,49 +1,101 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="hero-section" style="background-image: url('{{ asset('images/bgstep2.png') }}');">
+<div id="home-section" class="hero-section" style="background-image: url('{{ asset('images/bgstep2.png') }}');">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
         <div class="row">
-            <div class="col-lg-6">
-                <h1 style="font-size: 3rem; font-weight: 700;">{{ __('messages.hero_title_pt') }}</h1>
-                <h1 style="font-size: 3rem; font-weight: 700;">{{ __('messages.hero_title_sari_takagi') }}</h1>
-                <h1 style="font-size: 3rem; font-weight: 700;">{{ __('messages.hero_title_elok_produk') }}</h1>
-                <div class="my-4"></div>
-                <div style="background-color: #527a77; color: white;" class="d-inline-block px-3 py-2 mt-3">
-                    <strong style="color: #172b2a;">S</strong>mart 
-                    <strong style="color: #172b2a;">T</strong>eamwork 
-                    <strong style="color: #172b2a;">E</strong>xcelent 
-                    <strong style="color: #172b2a;">P</strong>rofessional
+            <div class="col-12 col-lg-auto">
+                <div class="brand-acronym">
+                    <div class="acronym-letters">
+                        <span>F</span>
+                        <span>A</span>
+                        <span>N</span>
+                        <span>S</span>
+                    </div>
+                    <div class="acronym-divider"></div>
+                    <div class="acronym-words">
+                        <span>{{ __('messages.fair') }}</span>
+                        <span>{{ __('messages.future') }}</span>
+                        <span>{{ __('messages.flexibility') }}</span>
+                        <span>{{ __('messages.frontier_spirit') }}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<marquee class="running-text" behavior="scroll" direction="left">
+<!-- <marquee class="running-text" behavior="scroll" direction="left">
     {{ __('messages.running_text') }}
-</marquee>  
+</marquee>   -->
 
-<section id="company-section" class="bg-cover text-dark profil-perusahaan" style="background-image: url('{{ asset('images/bgstep3.png') }}'); background-size: cover; background-position: center; overflow: hidden;">
-    <div class="container-fluid px-0" style="margin: 0; padding: 0;">
-        <div class="row no-gutters min-vh-30" style="margin-right: 0; margin-left: 0;">
-            <!-- Kolom Video -->
-            <div class="col-md-6 p-0" style="padding: 0; background-color: #fff;">
-                <div class="w-100 h-100" style="margin: 0; padding: 0;">
-                    <video autoplay loop muted playsinline class="w-100 h-100" style="object-fit: cover; border: none; outline: none; margin: 0; padding: 0;">
-                        <source src="{{ asset('videos/lobby.mp4') }}" type="video/mp4">
-                        {{ __('messages.video_not_supported') }}
-                    </video>
+<section id="company-section" class="profil-perusahaan py-5" style="background-color: #f4f8f7;">
+    <div class="container py-4">
+        <div class="row align-items-center g-4 g-lg-5 mb-5">
+            <!-- Kolom Foto Direktur -->
+            <div class="col-12" style="width:300px; max-width: 100%; flex: 0 0 auto;">
+                <div class="director-card" style="width: 300px; max-width: 100%;">
+                    <img src="{{ asset('images/presdir.png') }}" alt="Mr. Yoshida Shizuo - {{ __('messages.president_director') }}" class="w-100 d-block">
+                    <div class="director-caption">
+                        <h5 class="fw-bold mb-0">Mr. Yoshida Shizuo</h5>
+                        <p class="mb-0 small">{{ __('messages.president_director') }}</p>
+                    </div>
                 </div>
             </div>
             <!-- Kolom Konten -->
-            <div class="col-md-6 d-flex align-items-center" style="margin-left: -13px; padding: 0;">
-                <div class="p-5" style="margin: 0;">
-                    <h2 class="display-6 fw-bold">{{ __('messages.company_profile') }}</h2>
-                    <p class="fs-6">
-                        {{ __('messages.company_profile_description') }}
-                    </p>
+            <div class="col-12 col-md">
+                <h2 class="display-6 fw-bold mb-3">{{ __('messages.company_profile') }}</h2>
+                <p class="fs-6 text-muted" style="text-align: justify;">
+                    {{ __('messages.company_profile_description') }}
+                </p>
+                <p class="fs-6 text-muted" style="text-align: justify;">
+                    {{ __('messages.company_profile_description_2') }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Visi & Misi -->
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="vision-mission-card h-100">
+                    <div class="card-icon mb-3"><i class="fas fa-eye"></i></div>
+                    <h4 class="fw-bold mb-2">{{ __('messages.our_vision') }}</h4>
+                    <p class="text-muted mb-0">{{ __('messages.vision_text') }}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="vision-mission-card h-100">
+                    <div class="card-icon mb-3"><i class="fas fa-flag"></i></div>
+                    <h4 class="fw-bold mb-3">{{ __('messages.our_mission') }}</h4>
+                    <ol class="text-muted mb-0 ps-3">
+                        <li class="mb-2">{{ __('messages.mission_item_1') }}</li>
+                        <li class="mb-2">{{ __('messages.mission_item_2') }}</li>
+                        <li class="mb-2">{{ __('messages.mission_item_3') }}</li>
+                        <li class="mb-0">{{ __('messages.mission_item_4') }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Plant Section -->
+<section id="plant-section" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold">{{ __('messages.our_plant') }}</h2>
+            <p class="fs-6">{{ __('messages.plant_subtitle') }}</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="card border-0 shadow-sm" style="border-radius: 14px; overflow: hidden;">
+                    <img src="{{ asset('images/bgstep.png') }}" alt="{{ __('messages.company_name') }}" class="w-100" style="object-fit: cover; max-height: 380px;">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-1">{{ __('messages.company_name') }}</h5>
+                        <p class="mb-2" style="color: #527a77; font-weight: 600;">{{ __('messages.plant_established') }}</p>
+                        <p class="mb-0 text-muted">{{ __('messages.address_line_1') }}, {{ __('messages.address_line_2') }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,206 +183,212 @@
     </div>
 </div> --}}
 
-<section class="py-5">
-    <div class="row">
-        <div class="col-12 text-center mb-5">
-            <h2 class="display-6 fw-bold mt-5">{{ __('messages.trusted_by') }}</h2>
-        </div>
-    </div>
 
-    <!-- 1st tier (Partner Utama) -->
-    <div class="row justify-content-center mb-5">
-        <h5 class="text-center mb-4">{{ __('messages.oem_customers') }}</h5>
-        <div class="d-flex justify-content-center flex-wrap">
-            <div class="partner-logo mb-3">
-                <img src="images/tmmin.png" alt="{{ __('messages.logo_tmmin') }}" class="img-fluid">
-            </div>
-            <div class="partner-logo mb-3">
-                <img src="images/adm.png" alt="{{ __('messages.logo_adm') }}" class="img-fluid">
-            </div>
-            <div class="partner-logo mb-3">
-                <img src="images/hino.png" alt="{{ __('messages.logo_hino') }}" class="img-fluid">
-            </div>
-            <div class="partner-logo mb-3">
-                <img src="images/hpm.png" alt="{{ __('messages.logo_hpm') }}" class="img-fluid">
-            </div>
-            <div class="partner-logo mb-3">
-                <img src="images/mitsubishi.png" alt="{{ __('messages.logo_mitsubishi') }}" class="img-fluid">
-            </div>
-            <div class="partner-logo mb-3">
-                <img src="images/isuzu.png" alt="{{ __('messages.logo_isuzu') }}" class="img-fluid">
-            </div>
-        </div>
-    </div>
 
-    <!-- 2nd tier (Partner Pendukung) -->
-    <div class="row justify-content-center">
-        <h5 class="text-center mb-4">{{ __('messages.part_makers_customers') }}</h5>
-
-        <!-- Baris 1 -->
-        <div class="row justify-content-center">
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/tam.png" alt="{{ __('messages.logo_tam') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/aisin.png" alt="{{ __('messages.logo_aisin') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/gayamotor.png" alt="{{ __('messages.logo_gayamotor') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/tbina.png" alt="{{ __('messages.logo_tbina') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/fujiseat.png" alt="{{ __('messages.logo_fujiseat') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/nt.png" alt="{{ __('messages.logo_nt') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/ani.png" alt="{{ __('messages.logo_ani') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/denso.png" alt="{{ __('messages.logo_denso') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/futaba.png" alt="{{ __('messages.logo_futaba') }}" class="img-fluid">
-            </div>
-        </div>
-
-        <!-- Baris 2 -->
-        <div class="row justify-content-center mt-4">
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/jtek.png" alt="{{ __('messages.logo_jtek') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/metindo.png" alt="{{ __('messages.logo_metindo') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/sugity.png" alt="{{ __('messages.logo_sugity') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/oi.png" alt="{{ __('messages.logo_oi') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/mtat.png" alt="{{ __('messages.logo_mtat') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/ati.png" alt="{{ __('messages.logo_ati') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/cii.png" alt="{{ __('messages.logo_cii') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/fukoku.png" alt="{{ __('messages.logo_fukoku') }}" class="img-fluid">
-            </div>
-            <div class="col-auto partner-logo mb-4">
-                <img src="images/advios.png" alt="{{ __('messages.logo_advios') }}" class="img-fluid">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="py-5 bg-white" style="margin-bottom: 0;">
+<section class="activities-parallax" style="background-image: url('{{ asset('images/family.png') }}');">
     <style>
-        .carousel-aktivitas .carousel-item {
+        .activities-parallax {
             position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 90px 0;
+            overflow: hidden;
         }
 
-        .carousel-aktivitas .carousel-item img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            object-position: 50% 75%;
+        .activities-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(34, 51, 47, 0.7), rgba(54, 78, 76, 0.65));
+            z-index: 1;
         }
 
-        .carousel-aktivitas .carousel-caption {
+        .activities-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .activities-heading {
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            display: inline-block;
+            padding-bottom: 16px;
+            position: relative;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+        }
+
+        .activities-heading::after {
+            content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #ffffff;
+        }
+
+        .carousel-aktivitas {
+            max-width: 760px;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-aktivitas .activity-card img {
             width: 100%;
-            padding: 10px 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .carousel-aktivitas .carousel-caption-custom {
+            position: static;
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 700;
             text-align: center;
-            font-size: 24px;
-            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+        }
+
+        .carousel-aktivitas .carousel-control-prev,
+        .carousel-aktivitas .carousel-control-next {
+            width: 50px;
+            opacity: 1;
+        }
+
+        .carousel-aktivitas .carousel-control-prev {
+            left: -70px;
+        }
+
+        .carousel-aktivitas .carousel-control-next {
+            right: -70px;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-aktivitas .carousel-control-prev {
+                left: 0;
+            }
+
+            .carousel-aktivitas .carousel-control-next {
+                right: 0;
+            }
         }
 
         .carousel-aktivitas .carousel-control-prev-icon,
         .carousel-aktivitas .carousel-control-next-icon {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
+            padding: 20px;
         }
     </style>
 
-    <div class="text-center mb-4">
-        <h2 class="display-6 fw-bold">{{ __('messages.our_activities') }}</h2>
-    </div>
+    <div class="activities-overlay"></div>
 
-    <div id="aktivitasCarousel" class="carousel slide carousel-aktivitas" data-bs-ride="carousel" data-bs-interval="2000">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/aktivitas/familygathring.png" alt="{{ __('messages.activity_family_gathering') }}" class="d-block w-100">
-                <div class="carousel-caption">{{ __('messages.activity_family_gathering') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/kaizen.png" alt="{{ __('messages.activity_kaizen') }}" class="d-block w-100" style="object-position: 60%;">
-                <div class="carousel-caption">{{ __('messages.activity_kaizen') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/birthday.png" alt="{{ __('messages.activity_birthday') }}" class="d-block w-100" style="object-position: 60%;">
-                <div class="carousel-caption">{{ __('messages.activity_birthday') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/futsal.png" alt="{{ __('messages.activity_futsal') }}" class="d-block w-100">
-                <div class="carousel-caption">{{ __('messages.activity_futsal') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/qurban.png" alt="{{ __('messages.activity_qurban') }}" class="d-block w-100" style="object-position: 75% 50%;">
-                <div class="carousel-caption">{{ __('messages.activity_qurban') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/jumsih.png" alt="{{ __('messages.activity_jumat_bersih') }}" class="d-block w-100" style="object-position: 75% 50%;">
-                <div class="carousel-caption">{{ __('messages.activity_jumat_bersih') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/bukber.png" alt="{{ __('messages.activity_buka_puasa') }}" class="d-block w-100" style="object-position: 50% 75%;">
-                <div class="carousel-caption">{{ __('messages.activity_buka_puasa') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/safetyriding.png" alt="{{ __('messages.activity_safety_riding') }}" class="d-block w-100" style="object-position: 80% 50%;">
-                <div class="carousel-caption">{{ __('messages.activity_safety_riding') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/gangsing.png" alt="{{ __('messages.activity_gangsing') }}" class="d-block w-100" style="object-position: 80% 50%;">
-                <div class="carousel-caption">{{ __('messages.activity_gangsing') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/santunan.png" alt="{{ __('messages.activity_santunan') }}" class="d-block w-100" style="object-position: 80% 50%;">
-                <div class="carousel-caption">{{ __('messages.activity_santunan') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/mangrove.png" alt="{{ __('messages.activity_mangrove') }}" class="d-block w-100" style="object-position: 50% 30%;">
-                <div class="carousel-caption">{{ __('messages.activity_mangrove') }}</div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/aktivitas/posyandu.png" alt="{{ __('messages.activity_posyandu') }}" class="d-block w-100" style="object-position: center;">
-                <div class="carousel-caption">{{ __('messages.activity_posyandu') }}</div>
-            </div>
-            <!-- <div class="carousel-item">
-                <img src="images/aktivitas/ekspedisi.png" alt="{{ __('messages.activity_ekspedisi') }}" class="d-block w-100" style="object-position: 50% 43%;">
-                <div class="carousel-caption">{{ __('messages.activity_ekspedisi') }}</div>
-            </div> -->
+    <div class="container activities-content">
+        <div class="text-center mb-5">
+            <h2 class="activities-heading">{{ __('messages.our_activities') }}</h2>
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#aktivitasCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#aktivitasCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+        <div id="aktivitasCarousel" class="carousel slide carousel-aktivitas mx-auto" data-bs-ride="carousel" data-bs-interval="2000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/familygathring.png" alt="{{ __('messages.activity_family_gathering') }}">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_family_gathering') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/kaizen.png" alt="{{ __('messages.activity_kaizen') }}" style="object-position: 60%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_kaizen') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/birthday.png" alt="{{ __('messages.activity_birthday') }}" style="object-position: 60%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_birthday') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/futsal.png" alt="{{ __('messages.activity_futsal') }}">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_futsal') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/qurban.png" alt="{{ __('messages.activity_qurban') }}" style="object-position: 75% 50%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_qurban') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/jumsih.png" alt="{{ __('messages.activity_jumat_bersih') }}" style="object-position: 75% 50%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_jumat_bersih') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/bukber.png" alt="{{ __('messages.activity_buka_puasa') }}" style="object-position: 50% 75%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_buka_puasa') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/safetyriding.png" alt="{{ __('messages.activity_safety_riding') }}" style="object-position: 80% 50%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_safety_riding') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/gangsing.png" alt="{{ __('messages.activity_gangsing') }}" style="object-position: 80% 50%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_gangsing') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/santunan.png" alt="{{ __('messages.activity_santunan') }}" style="object-position: 80% 50%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_santunan') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/mangrove.png" alt="{{ __('messages.activity_mangrove') }}" style="object-position: 50% 30%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_mangrove') }}</div>
+                </div>
+                <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/posyandu.png" alt="{{ __('messages.activity_posyandu') }}" style="object-position: center;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_posyandu') }}</div>
+                </div>
+                <!-- <div class="carousel-item">
+                    <div class="activity-card">
+                        <img src="images/aktivitas/ekspedisi.png" alt="{{ __('messages.activity_ekspedisi') }}" style="object-position: 50% 43%;">
+                    </div>
+                    <div class="carousel-caption-custom">{{ __('messages.activity_ekspedisi') }}</div>
+                </div> -->
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#aktivitasCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#aktivitasCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
     </div>
 </section>
 

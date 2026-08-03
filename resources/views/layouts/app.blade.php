@@ -20,47 +20,115 @@
             padding: 0;
         }
 
-        .navbar {
-        background-color: rgb(255, 255, 255);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        padding: 2px 0;
+        :root {
+        --step-primary: #364e4c;
+        --step-accent: #527a77;
+        --step-dark: #22332f;
+        --step-active: #527a77;
+    }
+
+    .navbar {
+        background-color: transparent;
+        padding: 20px 0;
         position: fixed;
-        top: 25px;
-        width: 90%;
-        max-width: 1200px;
-        z-index: 1000;
-        border-radius: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: all 0.3s ease-in-out;
-    }
-
-    .navbar.scrolled {
         top: 0;
-        border-radius: 0;
+        left: 0;
         width: 100%;
-        max-width: 100%;
+        z-index: 1000;
+        transition: background-color 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .navbar-nav .nav-item {
-        margin: 0 20px;
-    }
-
-    .navbar-nav .nav-link {
-        color: #364e4c;
-        font-weight: 530;
-        font-size: 16px;
-        padding: 20px 15px;
-        position: relative;
-    }
-
-    .navbar-nav .nav-link:hover {
-        color: #364e4c;
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
 
     .navbar-brand img {
-        height: 55px;
+        height: 46px;
         margin-left: 0px;
+    }
+
+    .brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+        text-align: left;
+    }
+
+    .brand-name {
+        font-size: 15px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 0.3px;
+        transition: color 0.35s ease;
+    }
+
+    .brand-tagline {
+        font-size: 11px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.35s ease;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 0 6px;
+    }
+
+    /* Specificity matches Bootstrap's .navbar-dark .navbar-nav .nav-link so our
+       bright white wins over Bootstrap's default translucent rgba(255,255,255,.55) */
+    .navbar-dark .navbar-nav .nav-link {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 10px 20px !important;
+        border-radius: 30px;
+        position: relative;
+        transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link:focus {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .navbar-nav .nav-link.active {
+        background-color: var(--step-active);
+        color: #ffffff;
+    }
+
+    /* Scrolled state (desktop only — mobile keeps a permanently dark navbar
+       so the light hamburger icon always stays visible, see below) */
+    @media (min-width: 992px) {
+        .navbar.scrolled {
+            background-color: #ffffff;
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .navbar.scrolled .brand-name {
+            color: var(--step-primary);
+        }
+
+        .navbar.scrolled .brand-tagline {
+            color: rgba(54, 78, 76, 0.65);
+        }
+
+        .navbar.scrolled.navbar-dark .navbar-nav .nav-link {
+            color: var(--step-primary);
+        }
+
+        .navbar.scrolled.navbar-dark .navbar-nav .nav-link:hover {
+            color: var(--step-primary);
+            background-color: rgba(54, 78, 76, 0.08);
+        }
+
+        .navbar.scrolled .navbar-nav .nav-link.active {
+            color: #ffffff;
+        }
     }
 
     /* Mobile responsive navbar styles */
@@ -69,52 +137,58 @@
             width: 100%;
             max-width: 100%;
             top: 0;
-            border-radius: 0;
-            padding: 5px 0;
+            padding: 12px 0;
+            background-color: rgba(34, 51, 47, 0.97);
         }
-        
+
         .navbar-collapse {
-            background-color: white;
+            background-color: var(--step-dark);
             padding: 15px;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
             max-height: 80vh;
             overflow-y: auto;
+            margin-top: 10px;
         }
-        
+
         .navbar-nav .nav-item {
-            margin: 5px 0;
-            border-bottom: 1px solid #f0f0f0;
+            margin: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
+
         .navbar-nav .nav-link {
-            padding: 12px 15px;
+            padding: 12px 16px !important;
+            border-radius: 8px;
         }
-        
+
         .navbar-toggler {
             border: none;
             padding: 0.5rem 0.75rem;
             margin-right: 10px;
         }
-        
+
         .navbar-toggler:focus {
             box-shadow: none;
             outline: none;
         }
-        
+
         .navbar-brand {
             padding-left: 10px;
         }
-        
+
         .navbar-brand img {
-            height: 45px;
+            height: 40px;
         }
-        
+
+        .brand-tagline {
+            display: none;
+        }
+
         /* Language switcher adjustments for mobile */
         .language-switcher.dropdown {
             border-bottom: none;
         }
-        
+
         .language-switcher .dropdown-menu {
             position: static !important;
             transform: none !important;
@@ -125,12 +199,12 @@
 
     /* Small mobile adjustments */
     @media (max-width: 576px) {
-        .navbar-brand {
-            font-size: 0.9rem;
+        .brand-name {
+            font-size: 13px;
         }
-        
+
         .navbar-brand img {
-            height: 35px;
+            height: 34px;
         }
     }
 
@@ -216,17 +290,59 @@
             padding-left: 5%;
         }
 
-        .hero-content h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
         .hero-content h2 {
             font-size: 2rem;
             font-weight: 500;
             margin-bottom: 2rem;
+        }
+
+        .brand-acronym {
+            display: inline-flex;
+            align-items: stretch;
+            gap: 40px;
+        }
+
+        .acronym-letters {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .acronym-letters span {
+            font-size: clamp(3.6rem, 9vw, 6.5rem);
+            font-weight: 800;
+            line-height: 1;
+            color: #ffffff;
+            text-shadow: 4px 4px 0 var(--step-accent), 0 8px 24px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .acronym-divider {
+            width: 4px;
+            border-radius: 4px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0), var(--step-accent), rgba(255, 255, 255, 0));
+        }
+
+        .acronym-words {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .acronym-words span {
+            font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 480px) {
+            .brand-acronym {
+                gap: 20px;
+            }
         }
 
         .language-switcher {
@@ -255,22 +371,6 @@
             padding: 5 !important;
             display: block;
             line-height: 1.5;
-        }
-
-        .profil-perusahaan {
-            margin-top: 10 !important;
-            padding-top: 0 !important;
-        }
-
-        .profil-perusahaan .container,
-        .profil-perusahaan .row {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-        }
-
-        section.profil-perusahaan {
-            border: none !important;
-            outline: none !important;
         }
 
         @media (max-width: 992px) {
@@ -331,6 +431,53 @@
         .product-details p {
             color: #555;
             font-size: 14px;
+        }
+
+        .director-card {
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
+        }
+
+        .director-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .director-caption {
+            background: linear-gradient(90deg, var(--step-primary), var(--step-accent));
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 12px;
+        }
+
+        .vision-mission-card {
+            background: #ffffff;
+            border-left: 4px solid var(--step-accent);
+            border-radius: 10px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .vision-mission-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+        }
+
+        .vision-mission-card .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: var(--step-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
         }
 
         .partner-logo {
@@ -406,25 +553,19 @@
         }
 
         /* Hero Section Animations */
-        .hero-content h1 {
-        animation: slideInLeft 1s ease-out forwards;
+        .acronym-letters span,
+        .acronym-words span {
+        animation: slideInLeft 0.8s ease-out forwards;
         opacity: 0;
         }
 
-        .hero-content h1:nth-child(1) {
-        animation-delay: 0.3s;
-        }
+        .acronym-letters span:nth-child(1), .acronym-words span:nth-child(1) { animation-delay: 0.2s; }
+        .acronym-letters span:nth-child(2), .acronym-words span:nth-child(2) { animation-delay: 0.4s; }
+        .acronym-letters span:nth-child(3), .acronym-words span:nth-child(3) { animation-delay: 0.6s; }
+        .acronym-letters span:nth-child(4), .acronym-words span:nth-child(4) { animation-delay: 0.8s; }
 
-        .hero-content h1:nth-child(2) {
-        animation-delay: 0.6s;
-        }
-
-        .hero-content h1:nth-child(3) {
-        animation-delay: 0.9s;
-        }
-
-        .hero-content div[style*="background-color: #527a77"] {
-        animation: fadeIn 1s ease-out 1.2s forwards;
+        .acronym-divider {
+        animation: fadeIn 1s ease-out 0.3s forwards;
         opacity: 0;
         }
 
@@ -496,12 +637,12 @@
         }
 
         /* Footer Animation */
-        .footer h1, .footer p, .footer ul {
+        .footer h4, .footer p, .footer ul {
         animation: fadeIn 0.8s ease-out forwards;
         opacity: 0;
         }
 
-        .footer h1 { animation-delay: 0.2s; }
+        .footer h4 { animation-delay: 0.2s; }
         .footer p { animation-delay: 0.4s; }
         .footer ul { animation-delay: 0.6s; }
 
@@ -746,33 +887,36 @@
         }
     </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="120" tabindex="0">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="/">
+                <a class="navbar-brand" href="{{ route('landing') }}#home-section">
                     <img src="{{ asset('images/logostep.png') }}" alt="{{ __('messages.company_logo_alt') }}">
-                    {{ __('messages.company_name') }}
+                    <span class="brand-text">
+                        <span class="brand-name">{{ __('messages.company_name') }}</span>
+                        <span class="brand-tagline">{{ __('messages.brand_tagline') }}</span>
+                    </span>
                 </a>
-                
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('messages.toggle_navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('landing') }}#company-section">{{ __('messages.our_company') }}</a>
+                            <a class="nav-link" href="#home-section">{{ __('messages.home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('landing') }}#products-section">{{ __('messages.products') }}</a>
+                            <a class="nav-link" href="#products-section">{{ __('messages.products') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#systemsModal">{{ __('messages.our_systems') }}</a>
+                            <a class="nav-link" href="#plant-section">{{ __('messages.plant') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('landing') }}#contact-section">{{ __('messages.contact') }}</a>
-                        </li>   
+                            <a class="nav-link" href="#contact-section">{{ __('messages.contact') }}</a>
+                        </li>
                         <li class="nav-item language-switcher dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-globe"></i>
@@ -956,90 +1100,56 @@
         @yield('content')
     </main>
 
-    <footer id="contact-section" class="footer py-5" style="background-color: #364e4c; color: white;">
+    <footer id="contact-section" class="footer py-5" style="background-color: #ffffff; color: var(--step-primary);">
         <div class="container">
-            <div class="row">
+            <div class="row g-5">
                 <div class="col-md-6" style="padding-right: 30px;">
                     <div class="address-section">
-                        <h1 class="fw-bold">{{ __('messages.our_location') }}</h1>
+                        <h4 class="fw-bold mb-3">{{ __('messages.our_location') }}</h4>
                         <p><strong>{{ __('messages.company_name') }}</strong></p>
-                        <p>{{ __('messages.address_line_1') }}</p>
-                        <p>{{ __('messages.address_line_2') }}</p>
-                        <div class="map-container">
+                        <p class="text-muted">{{ __('messages.address_line_1') }}</p>
+                        <p class="text-muted">{{ __('messages.address_line_2') }}</p>
+                        <div class="map-container rounded-3 overflow-hidden shadow-sm">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.094022390613!2d107.16844407499977!3d-6.318154661826986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698532b5fcfdbf%3A0xf850ed44f66f6c40!2sPT.%20Sari%20Takagi%20Elok%20Produk%20(STEP)%20Plant%201!5e1!3m2!1sid!2sid!4v1745375297523!5m2!1sid!2sid" width="100%" height="425" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="col-md-6">
                     <div class="contact-section">
-                        <h1 class="fw-bold">{{ __('messages.contact_us') }}</h1>
-                        <p><strong>{{ __('messages.phone') }}:</strong> +6221-893-4211</p>
-                        <!-- <p><strong>{{ __('messages.email') }}:</strong> mkd@step.com</p> -->
-                        <p><strong>{{ __('messages.operating_hours') }}:</strong></p>
-                        <ul>
+                        <h4 class="fw-bold mb-3">{{ __('messages.contact_us') }}</h4>
+                        <p class="mb-2">
+                            <i class="fas fa-phone me-2" style="color: var(--step-accent);"></i>
+                            <strong>{{ __('messages.phone') }}:</strong>
+                            <a href="tel:+6289676366158" class="text-muted text-decoration-none">+62 896-7636-6158</a>
+                        </p>
+                        <p class="mb-2">
+                            <i class="fas fa-envelope me-2" style="color: var(--step-accent);"></i>
+                            <strong>{{ __('messages.email') }}:</strong>
+                            <a href="mailto:step.marketing@step.co.id" class="text-muted text-decoration-none">step.marketing@step.co.id</a>
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-globe me-2" style="color: var(--step-accent);"></i>
+                            <strong>{{ __('messages.website') }}:</strong>
+                            <a href="https://www.step.co.id" target="_blank" rel="noopener" class="text-muted text-decoration-none">www.step.co.id</a>
+                        </p>
+                        <p class="mb-1"><strong>{{ __('messages.operating_hours') }}:</strong></p>
+                        <ul class="text-muted">
                             <li>{{ __('messages.operating_hours_monday_friday') }}</li>
                             <li>{{ __('messages.operating_hours_weekends') }}</li>
                         </ul>
-                        <div style="text-align: left; font-family: 'Arial', sans-serif;">
-                            <h6 style="color: #ffffff; margin-bottom: 10px; font-family: 'Poppins', sans-serif; font-weight: bold;">
-                                {{ __('messages.prayer_schedule') }}
-                            </h6>  
-                            <div id="clock" style="font-size: 24px; margin-bottom: 10px; color: #ffffff;">{{ __('messages.loading_time') }}</div>
-                            <table style="align-items: left; border-collapse: collapse; font-size: 18px;">
-                                <thead>
-                                    <tr style="background-color: #527a77; color: white;">
-                                        <th style="padding: 10px 20px;">{{ __('messages.prayer') }}</th>
-                                        <th style="padding: 10px 20px;">{{ __('messages.time') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="jadwal-sholat" style="background-color: #f9f9f9; color: #333;">
-                                    <tr>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">{{ __('messages.subuh') }}</td>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">04:21</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">{{ __('messages.dzuhur') }}</td>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">11:45</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">{{ __('messages.ashar') }}</td>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">14:47</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">{{ __('messages.maghrib') }}</td>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">17:46</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">{{ __('messages.isya') }}</td>
-                                        <td style="padding: 10px 20px; border-bottom: 1px solid #ddd;">18:56<td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                        <script>
-                            // Jam real-time
-                            function updateClock() {
-                                const now = new Date();
-                                const jam = now.getHours().toString().padStart(2, '0');
-                                const menit = now.getMinutes().toString().padStart(2, '0');
-                                const detik = now.getSeconds().toString().padStart(2, '0');
-                                document.getElementById('clock').textContent = `${jam}:${menit}:${detik}`;
-                            }
-                            setInterval(updateClock, 1000);
-                            updateClock();
-                        </script>
                     </div>
                 </div>
             </div>
-    
-            <div class="text-center mt-5" style="margin-bottom: -40px;">
-                <p>{{ __('messages.copyright', ['year' => date('Y')]) }}</p>
-            </div>
         </div>
     </footer>
-    
+
+    <div class="footer-bottom-bar text-center py-3" style="background-color: var(--step-primary); color: rgba(255, 255, 255, 0.85);">
+        <div class="container">
+            <p class="mb-0 small">{{ __('messages.copyright', ['year' => date('Y')]) }}</p>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -1116,7 +1226,7 @@
                 });
             });
             
-            document.querySelectorAll('.btn-primary, .hero-content div[style*="background-color: #527a77"]').forEach(button => {
+            document.querySelectorAll('.btn-primary, .brand-acronym').forEach(button => {
                 button.addEventListener('mouseover', function() {
                     this.style.animation = 'pulse 1s infinite';
                 });

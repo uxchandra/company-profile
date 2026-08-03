@@ -18,7 +18,7 @@ use App\Http\Controllers\LandingPageController;
 // Route::get('/', [LandingPageController::class, 'index'])->name('landing');
 // to restore the full landing page.
 Route::get('/', function () {
-    return view('coming-soon');
+    return view('landing');
 })->name('landing');
 
 Route::get('language/{locale}', [App\Http\Controllers\LanguageController::class, 'switchLanguage'])->name('change.language');
