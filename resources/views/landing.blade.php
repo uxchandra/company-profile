@@ -34,7 +34,7 @@
     <div class="container py-4">
         <div class="row align-items-center g-4 g-lg-5 mb-5">
             <!-- Kolom Foto Direktur -->
-            <div class="col-12" style="width:300px; max-width: 100%; flex: 0 0 auto;">
+            <div class="col-12" style="width:300px; max-width: 100%; flex: 0 0 auto;" data-aos="slide-right">
                 <div class="director-card" style="width: 300px; max-width: 100%;">
                     <img src="{{ asset('images/presdir.png') }}" alt="Mr. Yoshida Shizuo - {{ __('messages.president_director') }}" class="w-100 d-block">
                     <div class="director-caption">
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <!-- Kolom Konten -->
-            <div class="col-12 col-md">
+            <div class="col-12 col-md" data-aos="slide-left">
                 <h2 class="display-6 fw-bold mb-3">{{ __('messages.company_profile') }}</h2>
                 <p class="fs-6 text-muted" style="text-align: justify;">
                     {{ __('messages.company_profile_description') }}
@@ -57,14 +57,14 @@
 
         <!-- Visi & Misi -->
         <div class="row g-4">
-            <div class="col-md-6">
+            <div class="col-md-6" data-aos="slide-right">
                 <div class="vision-mission-card h-100">
                     <div class="card-icon mb-3"><i class="fas fa-eye"></i></div>
                     <h4 class="fw-bold mb-2">{{ __('messages.our_vision') }}</h4>
                     <p class="text-muted mb-0">{{ __('messages.vision_text') }}</p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" data-aos="slide-left">
                 <div class="vision-mission-card h-100">
                     <div class="card-icon mb-3"><i class="fas fa-flag"></i></div>
                     <h4 class="fw-bold mb-3">{{ __('messages.our_mission') }}</h4>
@@ -80,21 +80,136 @@
     </div>
 </section>
 
-<!-- Our Plant Section -->
-<section id="plant-section" class="py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-6 fw-bold">{{ __('messages.our_plant') }}</h2>
-            <p class="fs-6">{{ __('messages.plant_subtitle') }}</p>
+<!-- Our Products Section -->
+<section id="products-section" class="products-parallax" style="background-image: url('{{ asset('images/family.png') }}');">
+    <style>
+        .products-parallax {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 90px 0;
+            overflow: hidden;
+        }
+
+        .products-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(34, 51, 47, 0.82), rgba(54, 78, 76, 0.78));
+            z-index: 1;
+        }
+
+        .products-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .products-heading {
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            display: inline-block;
+            padding-bottom: 16px;
+            position: relative;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+        }
+
+        .products-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #ffffff;
+        }
+
+        .product-showcase-card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 14px;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-showcase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-showcase-title {
+            background: var(--step-dark);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.6rem;
+            text-align: center;
+            padding: 18px 16px;
+        }
+
+        .product-showcase-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+
+    <div class="products-overlay"></div>
+
+    <div class="container products-content">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="products-heading">{{ __('messages.our_products') }}</h2>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <div class="card border-0 shadow-sm" style="border-radius: 14px; overflow: hidden;">
-                    <img src="{{ asset('images/bgstep.png') }}" alt="{{ __('messages.company_name') }}" class="w-100" style="object-fit: cover; max-height: 380px;">
-                    <div class="card-body p-4">
-                        <h5 class="fw-bold mb-1">{{ __('messages.company_name') }}</h5>
-                        <p class="mb-2" style="color: #527a77; font-weight: 600;">{{ __('messages.plant_established') }}</p>
-                        <p class="mb-0 text-muted">{{ __('messages.address_line_1') }}, {{ __('messages.address_line_2') }}</p>
+
+        <div class="row justify-content-center" style="max-width: 980px; margin-left: auto; margin-right: auto; --bs-gutter-x: 5rem; row-gap: 3rem;">
+            <div class="col-md-6" data-aos="slide-right">
+                <div class="product-showcase-card">
+                    <div class="product-showcase-title">{{ __('messages.safety_parts') }}</div>
+                    <div class="product-showcase-image">
+                        <img src="{{ asset('images/products/safety_parts.png') }}" alt="{{ __('messages.safety_parts') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="slide-left">
+                <div class="product-showcase-card">
+                    <div class="product-showcase-title">{{ __('messages.electric_parts') }}</div>
+                    <div class="product-showcase-image">
+                        <img src="{{ asset('images/products/electric_parts.png') }}" alt="{{ __('messages.electric_parts') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="slide-right">
+                <div class="product-showcase-card">
+                    <div class="product-showcase-title">{{ __('messages.body_parts') }}</div>
+                    <div class="product-showcase-image">
+                        <img src="{{ asset('images/products/body_parts.png') }}" alt="{{ __('messages.body_parts') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="slide-left">
+                <div class="product-showcase-card">
+                    <div class="product-showcase-title">{{ __('messages.engine_parts') }}</div>
+                    <div class="product-showcase-image">
+                        <img src="{{ asset('images/products/engine_parts.png') }}" alt="{{ __('messages.engine_parts') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="slide-right">
+                <div class="product-showcase-card">
+                    <div class="product-showcase-title">{{ __('messages.interior_parts') }}</div>
+                    <div class="product-showcase-image">
+                        <img src="{{ asset('images/products/interior_parts.png') }}" alt="{{ __('messages.interior_parts') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="slide-left">
+                <div class="product-showcase-card">
+                    <div class="product-showcase-title">{{ __('messages.chassis_parts') }}</div>
+                    <div class="product-showcase-image">
+                        <img src="{{ asset('images/products/chassis_parts.png') }}" alt="{{ __('messages.chassis_parts') }}">
                     </div>
                 </div>
             </div>
@@ -102,46 +217,21 @@
     </div>
 </section>
 
-<!-- Our Products Section with Glassmorphism -->
-<section id="products-section" class="position-relative overflow-hidden">
-    <!-- Background Blur Elements -->
-    <div class="blur-element blur-1"></div>
-    <div class="blur-element blur-2"></div>
-    <div class="blur-element blur-3"></div>
-    
-    <!-- Our Products Section -->
-    <div class="products-section">
-        <h2 class="display-6 fw-bold mt-5 text-center">{{ __('messages.our_products') }}</h2>
-        <h6 class="text-center mb-4">{{ __('messages.products_subtitle') }}</h6>
-        <div class="products-container">
-            <!-- Product 1 -->
-            <div class="product-card glass-card">
-                <div class="product-image">
-                    <img src="images/produk1.png" alt="{{ __('messages.automotive_components') }}">
-                </div>
-                <div class="product-details">
-                    <h4>{{ __('messages.automotive_components') }}</h4>
-                    <p>{{ __('messages.automotive_components_description') }}</p>
-                </div>
-            </div>
-            <!-- Product 2 -->
-            <div class="product-card glass-card">
-                <div class="product-image">
-                    <img src="images/produk2.png" alt="{{ __('messages.clamp_hose') }}">
-                </div>
-                <div class="product-details">
-                    <h4>{{ __('messages.clamp_hose') }}</h4>
-                    <p>{{ __('messages.clamp_hose_description') }}</p>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="product-card glass-card">
-                <div class="product-image">
-                    <img src="images/produk3.png" alt="{{ __('messages.precision_stamping_dies') }}">
-                </div>
-                <div class="product-details">
-                    <h4>{{ __('messages.precision_stamping_dies') }}</h4>
-                    <p>{{ __('messages.precision_stamping_dies_description') }}</p>
+<section id="plant-section" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="display-6 fw-bold">{{ __('messages.our_plant') }}</h2>
+            <p class="fs-6">{{ __('messages.plant_subtitle') }}</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8" data-aos="zoom-in">
+                <div class="card border-0 shadow-sm" style="border-radius: 14px; overflow: hidden;">
+                    <img src="{{ asset('images/bgstep.png') }}" alt="{{ __('messages.company_name') }}" class="w-100" style="object-fit: cover; max-height: 380px;">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-1">{{ __('messages.company_name') }}</h5>
+                        <p class="mb-2" style="color: #527a77; font-weight: 600;">{{ __('messages.plant_established') }}</p>
+                        <p class="mb-0 text-muted">{{ __('messages.address_line_1') }}, {{ __('messages.address_line_2') }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -185,7 +275,7 @@
 
 
 
-<section class="activities-parallax" style="background-image: url('{{ asset('images/family.png') }}');">
+<section class="activities-parallax" style="background-image: url('{{ asset('images/mesin.png') }}');">
     <style>
         .activities-parallax {
             position: relative;
@@ -232,7 +322,7 @@
         }
 
         .carousel-aktivitas {
-            max-width: 760px;
+            max-width: 1100px;
         }
 
         .activity-card {
@@ -255,7 +345,7 @@
             position: static;
             margin-top: 20px;
             color: #ffffff;
-            font-size: 1.15rem;
+            font-size: 2rem;
             font-weight: 700;
             text-align: center;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
@@ -296,11 +386,11 @@
     <div class="activities-overlay"></div>
 
     <div class="container activities-content">
-        <div class="text-center mb-5">
+        <div class="text-center mb-5" data-aos="fade-up">
             <h2 class="activities-heading">{{ __('messages.our_activities') }}</h2>
         </div>
 
-        <div id="aktivitasCarousel" class="carousel slide carousel-aktivitas mx-auto" data-bs-ride="carousel" data-bs-interval="2000">
+        <div id="aktivitasCarousel" class="carousel slide carousel-aktivitas mx-auto" data-bs-ride="carousel" data-bs-interval="2000" data-aos="zoom-in">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="activity-card">

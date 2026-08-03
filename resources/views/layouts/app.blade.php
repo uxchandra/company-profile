@@ -6,7 +6,7 @@
     <title>{{ config('app.name', __('messages.company_landing_page')) }}</title>
     <link rel="icon" href="{{ asset('images/logostep.png') }}" type="image/x-icon">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <!-- Styles -->
@@ -15,7 +15,7 @@
     <!-- Custom CSS -->
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -280,7 +280,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(30, 46, 42, 0.472);
+            background: rgba(30, 46, 42, 0.6);
             z-index: 1;
         }
 
@@ -383,55 +383,6 @@
             }
         }
 
-        .products-section {
-            margin-top: 50px;
-        }
-
-        .products-section h3 {
-            font-size: 30px;
-            color: #232323;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .products-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 50px;
-        }
-
-        .product-card {
-            width: 350px;
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            height: 200px;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .product-details {
-            padding: 20px;
-        }
-
-        .product-details h4 {
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-
-        .product-details p {
-            color: #555;
-            font-size: 14px;
-        }
 
         .director-card {
             background: #ffffff;
@@ -569,36 +520,6 @@
         opacity: 0;
         }
 
-        /* Section Heading Animations */
-        .display-6 {
-        animation: slideInUp 0.8s ease-out forwards;
-        opacity: 0;
-        }
-
-        /* Product Card Animations */
-        .product-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: fadeIn 0.8s ease-out forwards;
-        opacity: 0;
-        }
-
-        .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .products-container .product-card:nth-child(1) {
-        animation-delay: 0.2s;
-        }
-
-        .products-container .product-card:nth-child(2) {
-        animation-delay: 0.4s;
-        }
-
-        .products-container .product-card:nth-child(3) {
-        animation-delay: 0.6s;
-        }
-
         /* Partner Logo Animations */
         .partner-logo {
         animation: fadeIn 0.5s ease-out forwards;
@@ -636,16 +557,6 @@
         overflow: hidden;
         }
 
-        /* Footer Animation */
-        .footer h4, .footer p, .footer ul {
-        animation: fadeIn 0.8s ease-out forwards;
-        opacity: 0;
-        }
-
-        .footer h4 { animation-delay: 0.2s; }
-        .footer p { animation-delay: 0.4s; }
-        .footer ul { animation-delay: 0.6s; }
-
         /* System Modal Animation */
         .modal .card {
         animation: fadeIn 0.5s ease-out forwards;
@@ -656,28 +567,28 @@
         animation: slideInUp 0.5s ease-out;
         }
 
-        /* Animate elements when they come into view */
-        .animate-on-scroll {
+        /* Scroll Reveal Animations */
+        [data-aos] {
         opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transition-property: opacity, transform;
+        transition-duration: 0.8s;
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        will-change: transform, opacity;
         }
 
-        .animate-on-scroll.visible {
+        [data-aos="fade-up"] { transform: translateY(45px); }
+        [data-aos="slide-left"] { transform: translateX(90px); }
+        [data-aos="slide-right"] { transform: translateX(-90px); }
+        [data-aos="zoom-in"] { transform: scale(0.92); }
+
+        [data-aos].aos-visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(0, 0) scale(1);
         }
 
         /* Video Animation */
         video {
         animation: fadeIn 1.5s ease-out;
-        }
-
-        /* Profile Section Animation */
-        .profil-perusahaan p {
-        animation: slideInRight 0.8s ease-out forwards;
-        opacity: 0;
-        animation-delay: 0.4s;
         }
 
         .language-switcher .dropdown-menu {
@@ -696,123 +607,6 @@
             background-color: #f8f9fa;
             color: #2c3e50;
         }
-
-        /* Glassmorphism Styles */
-        #products-section {
-            padding: 40px 20px;
-            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Glass Effect for Cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .glass-card:hover {
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            transform: translateY(-5px);
-        }
-
-        /* Background Blur Elements */
-        .blur-element {
-            position: absolute;
-            border-radius: 50%;
-            background: #527a77; /* Green color */
-            filter: blur(70px);
-            z-index: -1;
-        }
-
-        .blur-1 {
-            width: 300px;
-            height: 300px;
-            top: -50px;
-            left: -100px;
-        }
-
-        .blur-2 {
-            width: 250px;
-            height: 250px;
-            bottom: 20%;
-            right: -50px;
-        }
-
-        .blur-3 {
-            width: 200px;
-            height: 200px;
-            bottom: 10%;
-            left: 30%;
-        }
-
-        /* Products Container */
-        .products-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .product-card {
-            width: 300px;
-            padding: 20px;
-        }
-
-        /* Image Container Styling - Fixed Height */
-        .product-image {
-            height: 180px; /* Fixed height for all image containers */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* This preserves aspect ratio */
-            border-radius: 8px;
-        }
-
-        .product-details {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-details h4 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .product-details p {
-            color: #555;
-            font-size: 0.9rem;
-        }
-
-        #products-section::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px; /* tinggi fade */
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff); /* sesuaikan warna background */
-            pointer-events: none;
-            z-index: 2;
-        }
-
 
         .certification-container {
             max-width: 1000px;
@@ -1103,7 +897,7 @@
     <footer id="contact-section" class="footer py-5" style="background-color: #ffffff; color: var(--step-primary);">
         <div class="container">
             <div class="row g-5">
-                <div class="col-md-6" style="padding-right: 30px;">
+                <div class="col-md-6" style="padding-right: 30px;" data-aos="slide-right">
                     <div class="address-section">
                         <h4 class="fw-bold mb-3">{{ __('messages.our_location') }}</h4>
                         <p><strong>{{ __('messages.company_name') }}</strong></p>
@@ -1115,7 +909,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6" data-aos="slide-left">
                     <div class="contact-section">
                         <h4 class="fw-bold mb-3">{{ __('messages.contact_us') }}</h4>
                         <p class="mb-2">
@@ -1163,44 +957,23 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            const elementsToAnimate = [
-                '.profil-perusahaan h2', 
-                '.profil-perusahaan p', 
-                '.products-section h2',
-                '.products-section h6',
-                '.product-card',
-                '.display-6',
-                '.partner-logo',
-                '.footer .address-section',
-                '.footer .contact-section'
-            ];
-            
-            elementsToAnimate.forEach(selector => {
-                document.querySelectorAll(selector).forEach(element => {
-                    element.classList.add('animate-on-scroll');
-                });
-            });
-            
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
-                    rect.bottom >= 0
-                );
+            const revealElements = document.querySelectorAll('[data-aos]');
+
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('aos-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+                revealElements.forEach(element => revealObserver.observe(element));
+            } else {
+                revealElements.forEach(element => element.classList.add('aos-visible'));
             }
-            
-            function checkScrollAnimation() {
-                const elementsToShow = document.querySelectorAll('.animate-on-scroll:not(.visible)');
-                elementsToShow.forEach(element => {
-                    if (isInViewport(element)) {
-                        element.classList.add('visible');
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', checkScrollAnimation);
-            checkScrollAnimation();
-            
+
             const carousel = document.getElementById('aktivitasCarousel');
             if (carousel) {
                 carousel.addEventListener('slide.bs.carousel', function() {
