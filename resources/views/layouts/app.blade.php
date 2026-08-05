@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ __('messages.company_name') }}</title>
-    <link rel="icon" href="{{ asset('images/logoo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -104,30 +104,9 @@
        so the light hamburger icon always stays visible, see below) */
     @media (min-width: 992px) {
         .navbar.scrolled {
-            background-color: #f4f8f7;
+            background-color: var(--step-dark);
             padding: 10px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .navbar.scrolled .brand-name {
-            color: var(--step-primary);
-        }
-
-        .navbar.scrolled .brand-tagline {
-            color: rgba(54, 78, 76, 0.65);
-        }
-
-        .navbar.scrolled.navbar-dark .navbar-nav .nav-link {
-            color: var(--step-primary);
-        }
-
-        .navbar.scrolled.navbar-dark .navbar-nav .nav-link:hover {
-            color: var(--step-primary);
-            background-color: rgba(54, 78, 76, 0.08);
-        }
-
-        .navbar.scrolled .navbar-nav .nav-link.active {
-            color: #ffffff;
         }
     }
 
@@ -731,7 +710,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('landing') }}#home-section">
-                    <img id="navbarLogo" src="{{ asset('images/logo.png') }}" data-logo-default="{{ asset('images/logo.png') }}" data-logo-scrolled="{{ asset('images/logoo.png') }}" alt="{{ __('messages.company_logo_alt') }}">
+                    <img src="{{ asset('images/logo.png') }}" alt="{{ __('messages.company_logo_alt') }}">
                     <span class="brand-text">
                         <span class="brand-name">{{ __('messages.company_name') }}</span>
                         <span class="brand-tagline">{{ __('messages.brand_tagline') }}</span>
@@ -979,7 +958,7 @@
                         <p class="mb-2">
                             <i class="fas fa-phone me-2" style="color: var(--step-accent);"></i>
                             <strong>{{ __('messages.phone') }}:</strong>
-                            <a href="tel:+6289676366158" class="text-muted text-decoration-none">+62 896-7636-6158</a>
+                            <a href="tel:+6289676366158" class="text-muted text-decoration-none">+62 813-8063-2481</a>
                         </p>
                         <p class="mb-2">
                             <i class="fas fa-envelope me-2" style="color: var(--step-accent);"></i>
@@ -1018,11 +997,7 @@
     <script>
         function setNavbarScrolled(isScrolled) {
             const navbar = document.querySelector('.navbar');
-            const logo = document.getElementById('navbarLogo');
             navbar.classList.toggle('scrolled', isScrolled);
-            if (logo) {
-                logo.src = isScrolled ? logo.dataset.logoScrolled : logo.dataset.logoDefault;
-            }
         }
 
         window.addEventListener('scroll', function() {

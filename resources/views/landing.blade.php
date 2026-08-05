@@ -577,7 +577,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="activity-card">
-                        <img src="images/aktivitas/familygathring.png" alt="{{ __('messages.activity_family_gathering') }}">
+                        <img src="images/aktivitas/familygathring.jpg" alt="{{ __('messages.activity_family_gathering') }}">
                     </div>
                     <div class="carousel-caption-custom">{{ __('messages.activity_family_gathering') }}</div>
                 </div>
