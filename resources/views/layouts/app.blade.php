@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', __('messages.company_landing_page')) }}</title>
-    <link rel="icon" href="{{ asset('images/logostep.png') }}" type="image/x-icon">
+    <title>{{ __('messages.company_name') }}</title>
+    <link rel="icon" href="{{ asset('images/logoo.png') }}" type="image/x-icon">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <!-- Styles -->
@@ -104,7 +104,7 @@
        so the light hamburger icon always stays visible, see below) */
     @media (min-width: 992px) {
         .navbar.scrolled {
-            background-color: #ffffff;
+            background-color: #f4f8f7;
             padding: 10px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
         }
@@ -296,6 +296,26 @@
             margin-bottom: 2rem;
         }
 
+        .company-policy-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 6px;
+        }
+
+        .hero-content .company-policy-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.6rem, 6vw, 4.4rem);
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.1;
+        }
+
         .brand-acronym {
             display: inline-flex;
             align-items: stretch;
@@ -403,6 +423,31 @@
             color: #ffffff;
             text-align: center;
             padding: 14px 12px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25d366;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 12px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-whatsapp i {
+            font-size: 20px;
+        }
+
+        .btn-whatsapp:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(37, 211, 102, 0.4);
         }
 
         .vision-mission-card {
@@ -686,7 +731,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('landing') }}#home-section">
-                    <img src="{{ asset('images/logostep.png') }}" alt="{{ __('messages.company_logo_alt') }}">
+                    <img id="navbarLogo" src="{{ asset('images/logo.png') }}" data-logo-default="{{ asset('images/logo.png') }}" data-logo-scrolled="{{ asset('images/logoo.png') }}" alt="{{ __('messages.company_logo_alt') }}">
                     <span class="brand-text">
                         <span class="brand-name">{{ __('messages.company_name') }}</span>
                         <span class="brand-tagline">{{ __('messages.brand_tagline') }}</span>
@@ -711,15 +756,34 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact-section">{{ __('messages.contact') }}</a>
                         </li>
+                        @php
+                            $localeFlags = ['id' => 'id', 'en' => 'gb', 'jp' => 'jp'];
+                            $currentFlag = $localeFlags[app()->getLocale()] ?? 'gb';
+                        @endphp
                         <li class="nav-item language-switcher dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-globe"></i>
+                            <a class="nav-link dropdown-toggle d-inline-flex align-items-center gap-2" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://flagcdn.com/24x18/{{ $currentFlag }}.png" srcset="https://flagcdn.com/48x36/{{ $currentFlag }}.png 2x" width="24" height="18" alt="" class="rounded-1">
                                 {{ strtoupper(app()->getLocale()) }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                                <li><a class="dropdown-item" href="{{ route('change.language', 'id') }}">{{ __('messages.language_id') }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('change.language', 'en') }}">{{ __('messages.language_en') }}</a></li>
-                                <li><a class="dropdown-item" href="{{ route('change.language', 'jp') }}">{{ __('messages.language_jp') }}</a></li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('change.language', 'id') }}">
+                                        <img src="https://flagcdn.com/24x18/id.png" srcset="https://flagcdn.com/48x36/id.png 2x" width="24" height="18" alt="" class="rounded-1">
+                                        {{ __('messages.language_id') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('change.language', 'en') }}">
+                                        <img src="https://flagcdn.com/24x18/gb.png" srcset="https://flagcdn.com/48x36/gb.png 2x" width="24" height="18" alt="" class="rounded-1">
+                                        {{ __('messages.language_en') }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('change.language', 'jp') }}">
+                                        <img src="https://flagcdn.com/24x18/jp.png" srcset="https://flagcdn.com/48x36/jp.png 2x" width="24" height="18" alt="" class="rounded-1">
+                                        {{ __('messages.language_jp') }}
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -894,7 +958,7 @@
         @yield('content')
     </main>
 
-    <footer id="contact-section" class="footer py-5" style="background-color: #ffffff; color: var(--step-primary);">
+    <footer id="contact-section" class="footer py-5" style="background-color: #f4f8f7; color: var(--step-primary);">
         <div class="container">
             <div class="row g-5">
                 <div class="col-md-6" style="padding-right: 30px;" data-aos="slide-right">
@@ -932,6 +996,11 @@
                             <li>{{ __('messages.operating_hours_monday_friday') }}</li>
                             <li>{{ __('messages.operating_hours_weekends') }}</li>
                         </ul>
+<!-- 
+                        <a href="https://wa.me/6289676366158" target="_blank" rel="noopener" class="btn-whatsapp mt-3">
+                            <i class="fab fa-whatsapp"></i>
+                            {{ __('messages.chat_whatsapp') }}
+                        </a> -->
                     </div>
                 </div>
             </div>
@@ -947,13 +1016,17 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        window.addEventListener('scroll', function() {
+        function setNavbarScrolled(isScrolled) {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 40) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+            const logo = document.getElementById('navbarLogo');
+            navbar.classList.toggle('scrolled', isScrolled);
+            if (logo) {
+                logo.src = isScrolled ? logo.dataset.logoScrolled : logo.dataset.logoDefault;
             }
+        }
+
+        window.addEventListener('scroll', function() {
+            setNavbarScrolled(window.scrollY > 40);
         });
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -1012,24 +1085,22 @@
         document.addEventListener('DOMContentLoaded', function() {
         // Existing scroll event listener
         window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 40) {
-                navbar.classList.add('scrolled');
+                setNavbarScrolled(true);
             } else {
                 // Only remove scrolled class if not on mobile
                 if (window.innerWidth > 992) {
-                    navbar.classList.remove('scrolled');
+                    setNavbarScrolled(false);
                 }
             }
         });
-        
+
         // Force navbar to be in "scrolled" state on mobile
         function checkMobileNavbar() {
-            const navbar = document.querySelector('.navbar');
             if (window.innerWidth <= 992) {
-                navbar.classList.add('scrolled');
+                setNavbarScrolled(true);
             } else if (window.scrollY <= 40) {
-                navbar.classList.remove('scrolled');
+                setNavbarScrolled(false);
             }
         }
         

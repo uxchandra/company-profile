@@ -4,7 +4,15 @@
       "Bash(kill %1)",
       "WebFetch(domain:madawikri.co.id)",
       "Read(//tmp/**)",
-      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/122.0 Safari/537.36\" https://madawikri.co.id/assets/css/style.css -o /tmp/madawikri.css -w \"%{http_code}\\\\n\")"
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/122.0 Safari/537.36\" https://madawikri.co.id/assets/css/style.css -o /tmp/madawikri.css -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s -o /tmp/land23.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8146/)",
+      "Bash(curl -s -o /tmp/land24.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8147/)",
+      "Bash(curl -s -o /tmp/land29.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8152/)",
+      "Bash(curl -s -o /tmp/land30.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8153/)",
+      "Bash(curl -s -o /tmp/land31.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8154/)",
+      "Bash(curl -s -o /tmp/land32.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8155/)",
+      "Bash(curl -s -o /tmp/land33.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8156/)",
+      "Bash(curl -s -o /tmp/land34.html -w \"HTTP:%{http_code}\\\\n\" http://127.0.0.1:8157/)"
     ]
   }
 }

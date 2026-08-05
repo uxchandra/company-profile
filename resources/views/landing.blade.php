@@ -4,8 +4,8 @@
 <div id="home-section" class="hero-section" style="background-image: url('{{ asset('images/bgstep2.png') }}');">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
-        <div class="row">
-            <div class="col-12 col-lg-auto">
+        <div class="row align-items-center gy-5">
+            <div class="col-12 col-lg-7" data-aos="slide-right">
                 <div class="brand-acronym">
                     <div class="acronym-letters">
                         <span>F</span>
@@ -20,6 +20,12 @@
                         <span>{{ __('messages.flexibility') }}</span>
                         <span>{{ __('messages.frontier_spirit') }}</span>
                     </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 d-flex justify-content-lg-end" data-aos="slide-left">
+                <div class="company-policy">
+                    <div class="company-policy-label">{{ __('messages.company_policy_label') }}</div>
+                    <h2 class="company-policy-title">{{ __('messages.company_policy_title') }}</h2>
                 </div>
             </div>
         </div>
@@ -59,14 +65,14 @@
         <div class="row g-4">
             <div class="col-md-6" data-aos="slide-right">
                 <div class="vision-mission-card h-100">
-                    <div class="card-icon mb-3"><i class="fas fa-eye"></i></div>
+                    <div class="card-icon mb-3"><i class="fas fa-binoculars"></i></div>
                     <h4 class="fw-bold mb-2">{{ __('messages.our_vision') }}</h4>
                     <p class="text-muted mb-0">{{ __('messages.vision_text') }}</p>
                 </div>
             </div>
             <div class="col-md-6" data-aos="slide-left">
                 <div class="vision-mission-card h-100">
-                    <div class="card-icon mb-3"><i class="fas fa-flag"></i></div>
+                    <div class="card-icon mb-3"><i class="fas fa-bullseye"></i></div>
                     <h4 class="fw-bold mb-3">{{ __('messages.our_mission') }}</h4>
                     <ol class="text-muted mb-0 ps-3">
                         <li class="mb-2">{{ __('messages.mission_item_1') }}</li>
@@ -217,20 +223,197 @@
     </div>
 </section>
 
-<section id="plant-section" class="py-5">
+<section id="plant-section" class="py-5" style="background-color: #f4f8f7;">
+    <style>
+        .plant-base-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--step-accent);
+            background: rgba(82, 122, 119, 0.12);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .plant-base-block + .plant-base-block {
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(54, 78, 76, 0.12);
+        }
+
+        .plant-network-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .plant-network-group + .plant-network-group {
+            margin-top: 22px;
+        }
+
+        .plant-network-subheading {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--step-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .plant-network-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plant-network-list li {
+            padding: 6px 0;
+            border-bottom: 1px dashed rgba(54, 78, 76, 0.12);
+            color: #555;
+            font-size: 15px;
+        }
+
+        .plant-network-list li:last-child {
+            border-bottom: none;
+        }
+
+        .plant-network-list li span {
+            display: block;
+            color: #888;
+            font-size: 13px;
+        }
+
+        .plant-network-list-compact li {
+            padding: 5px 0;
+        }
+    </style>
     <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="display-6 fw-bold">{{ __('messages.our_plant') }}</h2>
-            <p class="fs-6">{{ __('messages.plant_subtitle') }}</p>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8" data-aos="zoom-in">
+        <div class="row align-items-center g-4 g-lg-5 mb-5">
+            <!-- Kolom Konten -->
+            <div class="col-12 col-lg-5" data-aos="slide-right">
+                <div class="plant-base-block">
+                    <span class="plant-base-label">{{ __('messages.plant_japan_base_label') }}</span>
+                    <h5 class="fw-bold mb-2">{{ __('messages.plant_japan_base_name') }}</h5>
+                    <p class="text-muted mb-0">{{ __('messages.plant_japan_base_desc') }}</p>
+                </div>
+                <div class="plant-base-block">
+                    <span class="plant-base-label">{{ __('messages.plant_overseas_base_label') }}</span>
+                    <h5 class="fw-bold mb-1">{{ __('messages.company_name') }}</h5>
+                    <p class="mb-2" style="color: #527a77; font-weight: 600;">{{ __('messages.plant_established') }}</p>
+                    <p class="text-muted mb-0">{{ __('messages.address_line_1') }}, {{ __('messages.address_line_2') }}</p>
+                </div>
+            </div>
+            <!-- Kolom Video -->
+            <div class="col-12 col-lg-7" data-aos="zoom-in">
                 <div class="card border-0 shadow-sm" style="border-radius: 14px; overflow: hidden;">
-                    <img src="{{ asset('images/bgstep.png') }}" alt="{{ __('messages.company_name') }}" class="w-100" style="object-fit: cover; max-height: 380px;">
-                    <div class="card-body p-4">
-                        <h5 class="fw-bold mb-1">{{ __('messages.company_name') }}</h5>
-                        <p class="mb-2" style="color: #527a77; font-weight: 600;">{{ __('messages.plant_established') }}</p>
-                        <p class="mb-0 text-muted">{{ __('messages.address_line_1') }}, {{ __('messages.address_line_2') }}</p>
+                    <video autoplay loop muted playsinline class="w-100 d-block" style="height: auto;">
+                        <source src="{{ asset('videos/lobby.mp4') }}" type="video/mp4">
+                        {{ __('messages.video_not_supported') }}
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Network Breakdown -->
+        <div class="row g-4">
+            <div class="col-12 col-lg-6" data-aos="fade-up">
+                <div class="plant-network-card h-100">
+                    <span class="plant-base-label">{{ __('messages.plant_japan_base_label') }}</span>
+                    <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                        <img src="https://flagcdn.com/24x18/jp.png" srcset="https://flagcdn.com/48x36/jp.png 2x" width="24" height="18" alt="" class="rounded-1">
+                        Takagi Group Japan
+                    </h5>
+
+                    <div class="row g-4">
+                        <div class="col-7">
+                            <div class="plant-network-group">
+                                <h6 class="plant-network-subheading">{{ __('messages.plant_headquarters') }}</h6>
+                                <ul class="plant-network-list">
+                                    <li>Nagoya, Aichi Prefecture</li>
+                                </ul>
+                            </div>
+
+                            <div class="plant-network-group">
+                                <h6 class="plant-network-subheading">{{ __('messages.plant_factories') }} (4)</h6>
+                                <ul class="plant-network-list">
+                                    <li>Okazaki Factory<span>Okazaki City, Aichi Prefecture</span></li>
+                                    <li>Shinshiro Factory<span>Shinshiro City, Aichi Prefecture</span></li>
+                                    <li>Kyushu Factory<span>Kitakyushu City, Fukuoka Prefecture</span></li>
+                                    <li>Okinawa Factory<span>Uruma City, Okinawa Prefecture</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-5">
+                            <div class="plant-network-group">
+                                <h6 class="plant-network-subheading">{{ __('messages.plant_group_companies') }} (7)</h6>
+                                <ul class="plant-network-list plant-network-list-compact">
+                                    <li>Fukutaka Co., Ltd</li>
+                                    <li>Izumi Industries Co., Ltd</li>
+                                    <li>Fukushima Takagi Co., Ltd</li>
+                                    <li>Sogyo Co., Ltd</li>
+                                    <li>Toshin Tech Co., Ltd</li>
+                                    <li>Takagi Transportation Co., Ltd</li>
+                                    <li>Higashi Mikawa Takagi Co., Ltd</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6" data-aos="fade-up">
+                <div class="plant-network-card h-100">
+                    <span class="plant-base-label">{{ __('messages.plant_overseas_base_label') }}</span>
+                    <h5 class="fw-bold mb-3 d-flex align-items-center gap-2">
+                        <i class="fas fa-globe-asia" style="color: var(--step-accent);"></i>
+                        Takagi Group Overseas
+                    </h5>
+
+                    <div class="plant-network-group">
+                        <h6 class="plant-network-subheading d-flex align-items-center gap-2">
+                            <img src="https://flagcdn.com/20x15/us.png" srcset="https://flagcdn.com/40x30/us.png 2x" width="20" height="15" alt="" class="rounded-1">
+                            {{ __('messages.plant_country_america') }}
+                        </h6>
+                        <ul class="plant-network-list">
+                            <li>Takumi Stamping Ohio Plant</li>
+                            <li>Takumi Stamping Texas Plant</li>
+                        </ul>
+                    </div>
+
+                    <div class="plant-network-group">
+                        <h6 class="plant-network-subheading d-flex align-items-center gap-2">
+                            <img src="https://flagcdn.com/20x15/ca.png" srcset="https://flagcdn.com/40x30/ca.png 2x" width="20" height="15" alt="" class="rounded-1">
+                            {{ __('messages.plant_country_canada') }}
+                        </h6>
+                        <ul class="plant-network-list">
+                            <li>Takumi Stamping Canada</li>
+                        </ul>
+                    </div>
+
+                    <div class="plant-network-group">
+                        <h6 class="plant-network-subheading d-flex align-items-center gap-2">
+                            <img src="https://flagcdn.com/20x15/cn.png" srcset="https://flagcdn.com/40x30/cn.png 2x" width="20" height="15" alt="" class="rounded-1">
+                            {{ __('messages.plant_country_china') }}
+                        </h6>
+                        <ul class="plant-network-list">
+                            <li>Zhongshan Takagi Autopart</li>
+                            <li>Tianjin Takagi Autopart</li>
+                        </ul>
+                    </div>
+
+                    <div class="plant-network-group">
+                        <h6 class="plant-network-subheading d-flex align-items-center gap-2">
+                            <img src="https://flagcdn.com/20x15/id.png" srcset="https://flagcdn.com/40x30/id.png 2x" width="20" height="15" alt="" class="rounded-1">
+                            {{ __('messages.plant_country_indonesia') }}
+                        </h6>
+                        <ul class="plant-network-list">
+                            <li>{{ __('messages.company_name') }} (STEP)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -403,18 +586,6 @@
                         <img src="images/aktivitas/kaizen.png" alt="{{ __('messages.activity_kaizen') }}" style="object-position: 60%;">
                     </div>
                     <div class="carousel-caption-custom">{{ __('messages.activity_kaizen') }}</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="activity-card">
-                        <img src="images/aktivitas/birthday.png" alt="{{ __('messages.activity_birthday') }}" style="object-position: 60%;">
-                    </div>
-                    <div class="carousel-caption-custom">{{ __('messages.activity_birthday') }}</div>
-                </div>
-                <div class="carousel-item">
-                    <div class="activity-card">
-                        <img src="images/aktivitas/futsal.png" alt="{{ __('messages.activity_futsal') }}">
-                    </div>
-                    <div class="carousel-caption-custom">{{ __('messages.activity_futsal') }}</div>
                 </div>
                 <div class="carousel-item">
                     <div class="activity-card">
