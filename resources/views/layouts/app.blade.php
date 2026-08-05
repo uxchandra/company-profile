@@ -1008,12 +1008,9 @@
             const revealElements = document.querySelectorAll('[data-aos]');
 
             if ('IntersectionObserver' in window) {
-                const revealObserver = new IntersectionObserver((entries, observer) => {
+                const revealObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('aos-visible');
-                            observer.unobserve(entry.target);
-                        }
+                        entry.target.classList.toggle('aos-visible', entry.isIntersecting);
                     });
                 }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
