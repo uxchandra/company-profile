@@ -685,6 +685,106 @@
             margin-top: 20px;
         }
 
+        /* SSL Warning Lockdown Overlay */
+        .ssl-lockdown-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(15, 22, 20, 0.94);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease;
+        }
+
+        .ssl-lockdown-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .ssl-lockdown-card {
+            width: 460px;
+            max-width: 100%;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+            border-top: 5px solid #d93025;
+            padding: 40px 36px 34px;
+            text-align: center;
+            transform: translateY(24px) scale(0.97);
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .ssl-lockdown-overlay.show .ssl-lockdown-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .ssl-lockdown-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: rgba(217, 48, 37, 0.1);
+            color: #d93025;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .ssl-lockdown-title {
+            font-size: 21px;
+            font-weight: 700;
+            color: #22332f;
+            margin-bottom: 10px;
+        }
+
+        .ssl-lockdown-subtitle {
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #d93025;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .ssl-lockdown-body {
+            font-size: 14.5px;
+            color: #5a6664;
+            line-height: 1.65;
+            margin-bottom: 26px;
+        }
+
+        .ssl-lockdown-actions .btn {
+            font-size: 14.5px;
+            font-weight: 600;
+            padding: 11px 26px;
+            border-radius: 26px;
+            width: 100%;
+        }
+
+        .btn-ssl-refresh {
+            background: var(--step-primary);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-ssl-refresh:hover {
+            background: var(--step-dark);
+            color: #fff;
+        }
+
+        .ssl-lockdown-hint {
+            font-size: 12px;
+            color: #9aa5a3;
+            margin-top: 16px;
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .certification-container {
@@ -937,6 +1037,24 @@
         @yield('content')
     </main>
 
+    <!-- SSL Warning Lockdown Overlay -->
+    <div class="ssl-lockdown-overlay" id="sslWarningOverlay" role="alertdialog" aria-modal="true" aria-labelledby="sslWarningTitle">
+        <div class="ssl-lockdown-card">
+            <div class="ssl-lockdown-icon">
+                <i class="fas fa-lock-open"></i>
+            </div>
+            <span class="ssl-lockdown-subtitle">SSL / HTTPS</span>
+            <h2 class="ssl-lockdown-title" id="sslWarningTitle">{{ __('messages.ssl_warning_title') }}</h2>
+            <p class="ssl-lockdown-body">{{ __('messages.ssl_warning_body') }}</p>
+            <div class="ssl-lockdown-actions">
+                <button type="button" class="btn btn-ssl-refresh" id="sslWarningRefresh">
+                    <i class="fas fa-rotate-right me-2"></i>{{ __('messages.ssl_warning_refresh') }}
+                </button>
+            </div>
+            <p class="ssl-lockdown-hint">{{ __('messages.ssl_warning_hint') }}</p>
+        </div>
+    </div>
+
     <footer id="contact-section" class="footer py-5" style="background-color: #f4f8f7; color: var(--step-primary);">
         <div class="container">
             <div class="row g-5">
@@ -1091,8 +1209,26 @@
                 }
             });
         });
-    }); 
-        
+    });
+
+    // SSL not-secure lockdown — only relevant while the site is served over plain HTTP.
+    // No close button by design: refreshing is the only way past it, and the timer
+    // restarts on every load so it reappears 15s later until HTTPS is configured.
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlay = document.getElementById('sslWarningOverlay');
+        if (!overlay || window.location.protocol === 'https:') {
+            return;
+        }
+
+        setTimeout(() => {
+            overlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }, 15000);
+
+        document.getElementById('sslWarningRefresh').addEventListener('click', () => {
+            window.location.reload();
+        });
+    });
     </script>
 </body>
 </html>
