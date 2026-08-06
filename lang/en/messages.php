@@ -36,7 +36,7 @@ return [
     'language_jp' => 'JP - Japan',
     'close' => 'Close',
     'ssl_warning_title' => 'Connection Not Secure',
-    'ssl_warning_body' => 'This site is not yet using a valid SSL certificate. Your connection to this page is not encrypted.',
+    'ssl_warning_body' => 'This site has no valid SSL certificate. Please purchase and activate an SSL certificate from a trusted vendor.',
     'ssl_warning_refresh' => 'Reload Page',
     'ssl_warning_hint' => 'This warning will keep reappearing until SSL is enabled.',
     'shipping_system' => 'Shipping System',

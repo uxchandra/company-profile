@@ -36,7 +36,7 @@ return [
     'language_jp' => 'JP - Jepang',
     'close' => 'Tutup',
     'ssl_warning_title' => 'Koneksi Tidak Aman',
-    'ssl_warning_body' => 'Situs ini belum menggunakan sertifikat SSL yang valid. Koneksi Anda ke halaman ini belum terenkripsi.',
+    'ssl_warning_body' => 'Situs ini belum memiliki sertifikat SSL yang valid. Mohon segera beli dan aktifkan dari vendor terpercaya.',
     'ssl_warning_refresh' => 'Muat Ulang Halaman',
     'ssl_warning_hint' => 'Peringatan ini akan muncul kembali sampai SSL diaktifkan.',
     'shipping_system' => 'Sistem Pengiriman',

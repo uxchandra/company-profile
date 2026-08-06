@@ -14,10 +14,15 @@
     
     <!-- Custom CSS -->
     <style>
+        html {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         :root {
