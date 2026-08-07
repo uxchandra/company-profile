@@ -149,6 +149,7 @@
             border: none;
             padding: 0.5rem 0.75rem;
             margin-right: 10px;
+            flex-shrink: 0;
         }
 
         .navbar-toggler:focus {
@@ -158,10 +159,25 @@
 
         .navbar-brand {
             padding-left: 10px;
+            min-width: 0;
+            flex: 1 1 0%;
+            margin-right: 8px;
         }
 
         .navbar-brand img {
             height: 40px;
+            flex-shrink: 0;
+        }
+
+        .navbar-brand .brand-text {
+            min-width: 0;
+        }
+
+        .navbar-brand .brand-name {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .brand-tagline {
@@ -173,7 +189,7 @@
             border-bottom: none;
         }
 
-        .language-switcher .dropdown-menu {
+        .navbar-collapse .language-switcher .dropdown-menu {
             position: static !important;
             transform: none !important;
             width: 100%;
@@ -377,15 +393,6 @@
             line-height: 1.5;
         }
 
-        @media (max-width: 992px) {
-            .navbar-collapse {
-                background-color: white;
-                padding: 15px;
-            }
-            .navbar-nav .nav-item {
-                margin: 10px 0;
-            }
-        }
 
 
         .director-card {
@@ -814,6 +821,10 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container">
+                @php
+                    $localeFlags = ['id' => 'id', 'en' => 'gb', 'jp' => 'jp'];
+                    $currentFlag = $localeFlags[app()->getLocale()] ?? 'gb';
+                @endphp
                 <a class="navbar-brand" href="{{ route('landing') }}#home-section">
                     <img src="{{ asset('images/logo.png') }}" alt="{{ __('messages.company_logo_alt') }}">
                     <span class="brand-text">
@@ -840,10 +851,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact-section">{{ __('messages.contact') }}</a>
                         </li>
-                        @php
-                            $localeFlags = ['id' => 'id', 'en' => 'gb', 'jp' => 'jp'];
-                            $currentFlag = $localeFlags[app()->getLocale()] ?? 'gb';
-                        @endphp
                         <li class="nav-item language-switcher dropdown">
                             <a class="nav-link dropdown-toggle d-inline-flex align-items-center gap-2" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://flagcdn.com/24x18/{{ $currentFlag }}.png" srcset="https://flagcdn.com/48x36/{{ $currentFlag }}.png 2x" width="24" height="18" alt="" class="rounded-1">
