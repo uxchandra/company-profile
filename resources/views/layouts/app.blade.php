@@ -162,10 +162,11 @@
             min-width: 0;
             flex: 1 1 0%;
             margin-right: 8px;
+            gap: 8px;
         }
 
         .navbar-brand img {
-            height: 40px;
+            height: 30px;
             flex-shrink: 0;
         }
 
@@ -175,9 +176,8 @@
 
         .navbar-brand .brand-name {
             display: block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 1.2;
         }
 
         .brand-tagline {
@@ -200,11 +200,25 @@
     /* Small mobile adjustments */
     @media (max-width: 576px) {
         .brand-name {
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .navbar-brand img {
-            height: 34px;
+            height: 26px;
+        }
+
+        /* Give sections more breathing room on small screens instead of the
+           cramped default Bootstrap gutter/py-5 spacing */
+        #company-section,
+        footer.footer {
+            padding-top: 56px !important;
+            padding-bottom: 56px !important;
+        }
+
+        #company-section .container,
+        footer.footer .container {
+            padding-left: 20px;
+            padding-right: 20px;
         }
     }
 
@@ -1088,7 +1102,7 @@
                         <p class="mb-2">
                             <i class="fas fa-phone me-2" style="color: var(--step-accent);"></i>
                             <strong>{{ __('messages.phone') }}:</strong>
-                            <a href="tel:+6289676366158" class="text-muted text-decoration-none">+62 813-8063-2481</a>
+                            <a href="https://wa.me/6281380632481" target="_blank" rel="noopener" class="text-muted text-decoration-none">+62 813-8063-2481</a>
                         </p>
                         <p class="mb-2">
                             <i class="fas fa-envelope me-2" style="color: var(--step-accent);"></i>
@@ -1106,7 +1120,7 @@
                             <li>{{ __('messages.operating_hours_weekends') }}</li>
                         </ul>
 <!-- 
-                        <a href="https://wa.me/6289676366158" target="_blank" rel="noopener" class="btn-whatsapp mt-3">
+                        <a href="https://wa.me/6281380632481" target="_blank" rel="noopener" class="btn-whatsapp mt-3">
                             <i class="fab fa-whatsapp"></i>
                             {{ __('messages.chat_whatsapp') }}
                         </a> -->
@@ -1210,8 +1224,9 @@
         checkMobileNavbar();
         window.addEventListener('resize', checkMobileNavbar);
         
-        // Close navbar collapse when clicking a nav item
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        // Close navbar collapse when clicking a nav item (but not the language
+        // dropdown toggle — that should only open the dropdown, not collapse the menu)
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)');
         const navbarCollapse = document.querySelector('.navbar-collapse');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {

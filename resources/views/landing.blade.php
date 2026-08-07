@@ -290,6 +290,22 @@
         .plant-network-list-compact li {
             padding: 5px 0;
         }
+
+        @media (max-width: 576px) {
+            #plant-section {
+                padding-top: 56px !important;
+                padding-bottom: 56px !important;
+            }
+
+            #plant-section .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .plant-network-card {
+                padding: 24px 20px;
+            }
+        }
     </style>
     <div class="container">
         <div class="row align-items-center g-4 g-lg-5 mb-5">
@@ -329,7 +345,7 @@
                     </h5>
 
                     <div class="row g-4">
-                        <div class="col-7">
+                        <div class="col-12 col-sm-7">
                             <div class="plant-network-group">
                                 <h6 class="plant-network-subheading">{{ __('messages.plant_headquarters') }}</h6>
                                 <ul class="plant-network-list">
@@ -348,7 +364,7 @@
                             </div>
                         </div>
 
-                        <div class="col-5">
+                        <div class="col-12 col-sm-5">
                             <div class="plant-network-group">
                                 <h6 class="plant-network-subheading">{{ __('messages.plant_group_companies') }} (7)</h6>
                                 <ul class="plant-network-list plant-network-list-compact">
@@ -555,6 +571,17 @@
 
             .carousel-aktivitas .carousel-control-next {
                 right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-aktivitas .activity-card img {
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+
+            .carousel-aktivitas .carousel-caption-custom {
+                font-size: 1.25rem;
             }
         }
 
